@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
-//
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-//         useMaterial3: true,
-//       ),
-//     );
-//   }
-// }
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/services.dart';
@@ -197,11 +181,13 @@ class _GameWidgetState extends State<GameWidget> {
           ),
           // Player
           // TODO: Convert to AnimatedAlign & add a duration argument
-          Align(
+          AnimatedAlign(
+            duration: Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
             alignment: _playerAlignment,
             child: Container(
-              width: 100,
-              height: 100,
+              width: 70,
+              height: 70,
               decoration: BoxDecoration(
                 color: _targetData.color,
                 shape: BoxShape.circle,
@@ -214,7 +200,8 @@ class _GameWidgetState extends State<GameWidget> {
               // Handle taps on targets
               onTapDown: (details) => _handleTapDown(details, i),
               // TODO: Convert to AnimatedAlign & add a duration argument
-              child: Align(
+              child: AnimatedAlign(
+                duration: Duration(milliseconds: 300),
                 alignment: _targets[i],
                 child: Target(
                   color: _targetColors[i],
